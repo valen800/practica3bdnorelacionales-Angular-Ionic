@@ -1,0 +1,48 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-title>Lista de campeones LoL</ion-title>
+		<ion-buttons end>
+      <button ion-button icon-only (click)="toggleMostrarFooter()">
+      <ion-icon name="sync"></ion-icon>
+      </button>
+			<button ion-button icon-only (click)="nuevoCampeon()">
+       <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-list>
+  <ion-item-sliding *ngFor="let campeon of campeones" >
+  <ion-item>
+    <ion-avatar item-start>
+      <img [src]="campeon.icon">
+    </ion-avatar>
+    <h2>{{ campeon.name }}</h2>
+    <p>{{ campeon.title }}</p>
+    <button ion-button clear item-end (click)="irADetalleCampeon(campeon)">Ver</button>
+  </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger" (click)="eliminarCampeon(campeon)">
+        <ion-icon name="trash"></ion-icon>
+        Eliminar
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+</ion-content>
+<!-- *ngIf="mostrarFooter == true" -->
+<ion-footer *ngIf="mostrarFooter == true" >
+    <ion-toolbar color="primary" class="centrar-botones">
+        <button ion-button icon-start color="danger" (click)="eliminarTodosLosCampeones() ">
+          <ion-icon name="trash"></ion-icon>
+          Borrar Campeones
+        </button>
+      <button ion-button icon-start color="light" (click)="aynadirTodosLosCampeones()">
+        <ion-icon name="sync"></ion-icon>
+        Sincronizar Campeones
+      </button>
+    </ion-toolbar>
+</ion-footer>

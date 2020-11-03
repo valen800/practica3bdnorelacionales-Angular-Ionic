@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Campeón: {{ campeon.name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+  <img [src]="campeon.icon"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{ campeon.name }}
+      </ion-card-title>
+      <h2>{{ campeon.title }}</h2>
+      <span *ngFor="let etiqueta of campeon.tags; let i = index" class="etiqueta" >
+        {{ etiqueta }} <span *ngIf="i < campeon.tags.length - 1">,</span></span>
+    <p> {{ campeon.description }} </p>
+  </ion-card-content>
+</ion-card>
+
+</ion-content>
